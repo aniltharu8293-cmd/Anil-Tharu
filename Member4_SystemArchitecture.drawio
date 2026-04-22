@@ -1,0 +1,205 @@
+<mxfile host="app.diagrams.net">
+  <diagram id="0__eMks9RpUwSO-2TdaF" name="Page-1">
+    <mxGraphModel dx="1091" dy="449" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="input_label" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontStyle=1;fontSize=12;fontColor=#666666;" value="INPUT LAYER" vertex="1">
+          <mxGeometry height="25" width="200" x="80" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="input_box" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EBF5FB;strokeColor=#2E5B9A;strokeWidth=2;dashed=1;" value="" vertex="1">
+          <mxGeometry height="300" width="240" x="48" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="proj_data" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;align=left;" value="projects.py&#xa;───────────&#xa;Project proposals&#xa;with attributes:&#xa;• name, budget&#xa;• required_skills&#xa;• strategic scores&#xa;• duration_weeks" vertex="1">
+          <mxGeometry height="130" width="200" x="69" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="res_data" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;align=left;" value="resources.py&#xa;───────────&#xa;Available capacity:&#xa;• skill_pool dict&#xa;• total_budget&#xa;• planning_period" vertex="1">
+          <mxGeometry height="120" width="200" x="69" y="275" as="geometry" />
+        </mxCell>
+        <mxCell id="proc_label" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontStyle=1;fontSize=12;fontColor=#666666;" value="PROCESSING LAYER" vertex="1">
+          <mxGeometry height="25" width="680" x="380" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="proc_box" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F8F5;strokeColor=#16A085;strokeWidth=2;dashed=1;" value="" vertex="1">
+          <mxGeometry height="300" width="720" x="360" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="phase1_mod" parent="1" style="swimlane;startSize=30;fillColor=#2E5B9A;strokeColor=#2E5B9A;fontColor=#ffffff;fontStyle=1;fontSize=12;" value="phase1.py" vertex="1">
+          <mxGeometry height="260" width="200" x="380" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="phase1_content" parent="phase1_mod" style="text;strokeColor=none;fillColor=#EEF2F9;align=left;verticalAlign=top;spacingLeft=8;fontSize=10;" value="phase1_score(project, weights)&#xa;───────────────────&#xa;Inputs:&#xa;  project dict&#xa;  weights dict&#xa;&#xa;Logic:&#xa;  score = alignment×0.40&#xa;         + financial×0.35&#xa;         + risk×0.25&#xa;&#xa;Returns:&#xa;  float (0–100)&#xa;&#xa;Threshold: 60&#xa;Below → REJECTED" vertex="1">
+          <mxGeometry height="230" width="200" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="phase2_mod" parent="1" style="swimlane;startSize=30;fillColor=#16A085;strokeColor=#16A085;fontColor=#ffffff;fontStyle=1;fontSize=12;" value="phase2.py" vertex="1">
+          <mxGeometry height="260" width="200" x="620" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="phase2_content" parent="phase2_mod" style="text;strokeColor=none;fillColor=#E8F8F5;align=left;verticalAlign=top;spacingLeft=8;fontSize=10;" value="phase2_check(project,&#xa;             resources,&#xa;             budget_pool)&#xa;───────────────────&#xa;Checks:&#xa;  1. Skill availability&#xa;  2. Budget ceiling&#xa;  3. Timing window&#xa;&#xa;Returns:&#xa;  (outcome, reason)&#xa;  outcome: Approved&#xa;           or Deferred&#xa;&#xa;Reason stored in&#xa;DecisionRecord" vertex="1">
+          <mxGeometry height="230" width="200" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="decision_mod" parent="1" style="swimlane;startSize=30;fillColor=#b85450;strokeColor=#b85450;fontColor=#ffffff;fontStyle=1;fontSize=12;" value="decision.py" vertex="1">
+          <mxGeometry height="260" width="200" x="860" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="decision_content" parent="decision_mod" style="text;strokeColor=none;fillColor=#FADBD8;align=left;verticalAlign=top;spacingLeft=8;fontSize=10;" value="record_decision(project,&#xa;               score,&#xa;               outcome,&#xa;               reason)&#xa;───────────────────&#xa;Builds dict:&#xa;  name&#xa;  phase1_score&#xa;  phase1_result&#xa;  phase2_result&#xa;  final_decision&#xa;  reason&#xa;  timestamp&#xa;&#xa;Returns: record dict" vertex="1">
+          <mxGeometry height="230" width="200" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="orch_label" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontStyle=1;fontSize=12;fontColor=#666666;" value="ORCHESTRATION LAYER" vertex="1">
+          <mxGeometry height="25" width="300" x="400" y="464" as="geometry" />
+        </mxCell>
+        <mxCell id="main_mod" parent="1" style="swimlane;startSize=35;fillColor=#1a3a6b;strokeColor=#1a3a6b;fontColor=#ffffff;fontStyle=1;fontSize=13;" value="main.py — Scenario Orchestrator" vertex="1">
+          <mxGeometry height="160" width="720" x="360" y="491" as="geometry" />
+        </mxCell>
+        <mxCell id="main_content" parent="main_mod" style="text;strokeColor=none;fillColor=#2C3E50;fontColor=#ECF0F1;align=left;verticalAlign=top;spacingLeft=10;fontSize=10;" value="run_portfolio(projects, resources, budget_pool)&#xa;────────────────────────────────────────────&#xa;For each project:&#xa;  1. score = phase1_score(proj, WEIGHTS)&#xa;  2. if score &lt; THRESHOLD → record_decision(..., &#39;Rejected&#39;, reason)&#xa;  3. else: outcome, reason = phase2_check(proj, resources, budget)&#xa;  4. record_decision(proj, score, outcome, reason)&#xa;Returns: results list (full decision table)" vertex="1">
+          <mxGeometry height="125" width="720" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="out_label" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontStyle=1;fontSize=12;fontColor=#666666;" value="OUTPUT LAYER" vertex="1">
+          <mxGeometry height="25" width="440" x="1130" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="out_box" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F9EBEA;strokeColor=#b85450;strokeWidth=2;dashed=1;" value="" vertex="1">
+          <mxGeometry height="300" width="460" x="1120" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="dec_table_title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontStyle=1;fontSize=11;" value="Decision Table Output (Pandas DataFrame)" vertex="1">
+          <mxGeometry height="20" width="440" x="1130" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="th1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#2E5B9A;strokeColor=#2E5B9A;fontColor=#ffffff;fontSize=9;fontStyle=1;" value="Project" vertex="1">
+          <mxGeometry height="30" width="80" x="1130" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="th2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#2E5B9A;strokeColor=#2E5B9A;fontColor=#ffffff;fontSize=9;fontStyle=1;" value="P1 Score" vertex="1">
+          <mxGeometry height="30" width="70" x="1210" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="th3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#2E5B9A;strokeColor=#2E5B9A;fontColor=#ffffff;fontSize=9;fontStyle=1;" value="P1 Result" vertex="1">
+          <mxGeometry height="30" width="70" x="1280" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="th4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#2E5B9A;strokeColor=#2E5B9A;fontColor=#ffffff;fontSize=9;fontStyle=1;" value="Decision" vertex="1">
+          <mxGeometry height="30" width="80" x="1350" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="th5" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#2E5B9A;strokeColor=#2E5B9A;fontColor=#ffffff;fontSize=9;fontStyle=1;" value="Reason" vertex="1">
+          <mxGeometry height="30" width="140" x="1430" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="r1c1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=9;" value="CRM Upgrade" vertex="1">
+          <mxGeometry height="30" width="80" x="1130" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="r1c2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=9;" value="82" vertex="1">
+          <mxGeometry height="30" width="70" x="1210" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="r1c3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=9;" value="Pass" vertex="1">
+          <mxGeometry height="30" width="70" x="1280" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="r1c4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#27AE60;strokeColor=#27AE60;fontColor=#ffffff;fontSize=9;fontStyle=1;" value="Approved" vertex="1">
+          <mxGeometry height="30" width="80" x="1350" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="r1c5" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=9;" value="—" vertex="1">
+          <mxGeometry height="30" width="140" x="1430" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="r2c1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FEF9E7;strokeColor=#d6b656;fontSize=9;" value="Cloud Migrate" vertex="1">
+          <mxGeometry height="30" width="80" x="1130" y="210" as="geometry" />
+        </mxCell>
+        <mxCell id="r2c2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FEF9E7;strokeColor=#d6b656;fontSize=9;" value="76" vertex="1">
+          <mxGeometry height="30" width="70" x="1210" y="210" as="geometry" />
+        </mxCell>
+        <mxCell id="r2c3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FEF9E7;strokeColor=#d6b656;fontSize=9;" value="Pass" vertex="1">
+          <mxGeometry height="30" width="70" x="1280" y="210" as="geometry" />
+        </mxCell>
+        <mxCell id="r2c4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E67E22;strokeColor=#E67E22;fontColor=#ffffff;fontSize=9;fontStyle=1;" value="Deferred" vertex="1">
+          <mxGeometry height="30" width="80" x="1350" y="210" as="geometry" />
+        </mxCell>
+        <mxCell id="r2c5" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FEF9E7;strokeColor=#d6b656;fontSize=9;" value="Insuff. DevOps capacity" vertex="1">
+          <mxGeometry height="30" width="140" x="1430" y="210" as="geometry" />
+        </mxCell>
+        <mxCell id="r3c1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FADBD8;strokeColor=#b85450;fontSize=9;" value="Legacy Report" vertex="1">
+          <mxGeometry height="30" width="80" x="1130" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="r3c2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FADBD8;strokeColor=#b85450;fontSize=9;" value="43" vertex="1">
+          <mxGeometry height="30" width="70" x="1210" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="r3c3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FADBD8;strokeColor=#b85450;fontSize=9;" value="Fail" vertex="1">
+          <mxGeometry height="30" width="70" x="1280" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="r3c4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b85450;strokeColor=#b85450;fontColor=#ffffff;fontSize=9;fontStyle=1;" value="Rejected" vertex="1">
+          <mxGeometry height="30" width="80" x="1350" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="r3c5" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FADBD8;strokeColor=#b85450;fontSize=9;" value="Below strategic threshold" vertex="1">
+          <mxGeometry height="30" width="140" x="1430" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="r4c1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=9;" value="Security Audit" vertex="1">
+          <mxGeometry height="30" width="80" x="1130" y="270" as="geometry" />
+        </mxCell>
+        <mxCell id="r4c2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=9;" value="91" vertex="1">
+          <mxGeometry height="30" width="70" x="1210" y="270" as="geometry" />
+        </mxCell>
+        <mxCell id="r4c3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=9;" value="Pass" vertex="1">
+          <mxGeometry height="30" width="70" x="1280" y="270" as="geometry" />
+        </mxCell>
+        <mxCell id="r4c4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#27AE60;strokeColor=#27AE60;fontColor=#ffffff;fontSize=9;fontStyle=1;" value="Approved" vertex="1">
+          <mxGeometry height="30" width="80" x="1350" y="270" as="geometry" />
+        </mxCell>
+        <mxCell id="r4c5" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=9;" value="—" vertex="1">
+          <mxGeometry height="30" width="140" x="1430" y="270" as="geometry" />
+        </mxCell>
+        <mxCell id="r5c1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FEF9E7;strokeColor=#d6b656;fontSize=9;" value="Data Warehouse" vertex="1">
+          <mxGeometry height="30" width="80" x="1130" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="r5c2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FEF9E7;strokeColor=#d6b656;fontSize=9;" value="71" vertex="1">
+          <mxGeometry height="30" width="70" x="1210" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="r5c3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FEF9E7;strokeColor=#d6b656;fontSize=9;" value="Pass" vertex="1">
+          <mxGeometry height="30" width="70" x="1280" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="r5c4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E67E22;strokeColor=#E67E22;fontColor=#ffffff;fontSize=9;fontStyle=1;" value="Deferred" vertex="1">
+          <mxGeometry height="30" width="80" x="1350" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="r5c5" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FEF9E7;strokeColor=#d6b656;fontSize=9;" value="Budget ceiling exceeded" vertex="1">
+          <mxGeometry height="30" width="140" x="1430" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="flow1" edge="1" parent="1" source="proj_data" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;strokeColor=#2E5B9A;strokeWidth=2;fontStyle=1;fontSize=10;" target="phase1_mod" value="project data">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="flow2" edge="1" parent="1" source="res_data" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;strokeColor=#16A085;strokeWidth=2;fontStyle=1;fontSize=10;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="phase2_content" value="resources">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="169" y="430" />
+              <mxPoint x="600" y="430" />
+              <mxPoint x="600" y="275" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="flow3" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;strokeColor=#2E5B9A;strokeWidth=2;fontStyle=1;fontSize=10;" value="score">
+          <mxGeometry relative="1" y="14" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="580" y="244" as="sourcePoint" />
+            <mxPoint x="620" y="244" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="flow4" edge="1" parent="1" source="phase2_mod" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;strokeColor=#16A085;strokeWidth=2;fontStyle=1;fontSize=10;" target="decision_mod" value="outcome">
+          <mxGeometry relative="1" y="10" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="flow5" edge="1" parent="1" source="decision_mod" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;strokeColor=#b85450;strokeWidth=2;fontStyle=1;fontSize=10;" target="main_mod" value="decision records">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="flow6" edge="1" parent="1" source="main_mod" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;strokeColor=#b85450;strokeWidth=2;fontStyle=1;fontSize=10;" target="r1c1" value="results table">
+          <mxGeometry relative="1" x="-0.2911" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="1100" y="571" />
+              <mxPoint x="1100" y="195" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="scen_title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontStyle=1;fontSize=12;fontColor=#1a3a6b;" value="3 Evaluation Scenarios:" vertex="1">
+          <mxGeometry height="25" width="200" x="620" y="675" as="geometry" />
+        </mxCell>
+        <mxCell id="scen_a" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#27AE60;strokeColor=#27AE60;fontColor=#ffffff;fontSize=11;fontStyle=1;" value="Scenario A&#xa;Balanced Resources&#xa;(Baseline)" vertex="1">
+          <mxGeometry height="70" width="200" x="400" y="700" as="geometry" />
+        </mxCell>
+        <mxCell id="scen_b" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E67E22;strokeColor=#E67E22;fontColor=#ffffff;fontSize=11;fontStyle=1;" value="Scenario B&#xa;Skill Scarcity&#xa;(Resource Stress)" vertex="1">
+          <mxGeometry height="70" width="200" x="620" y="700" as="geometry" />
+        </mxCell>
+        <mxCell id="scen_c" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b85450;strokeColor=#b85450;fontColor=#ffffff;fontSize=11;fontStyle=1;" value="Scenario C&#xa;Competing Priorities&#xa;(Strategic Conflict)" vertex="1">
+          <mxGeometry height="70" width="200" x="840" y="700" as="geometry" />
+        </mxCell>
+        <mxCell id="tech_box" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#aaaaaa;fontSize=11;fontStyle=2;" value="Tech Stack:  Python 3 │ pandas │ openpyxl │ Modular .py files │ CSV / Excel output" vertex="1">
+          <mxGeometry height="35" width="820" x="310" y="795" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

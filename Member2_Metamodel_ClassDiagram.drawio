@@ -1,0 +1,119 @@
+<mxfile host="app.diagrams.net">
+  <diagram id="KkRFN2BjpoETST6HtlXs" name="Page-1">
+    <mxGraphModel dx="1663" dy="561" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="portfolio_title" parent="1" style="swimlane;startSize=30;fillColor=#2E5B9A;strokeColor=#2E5B9A;fontColor=#ffffff;fontStyle=1;fontSize=13;" value="Portfolio" vertex="1">
+          <mxGeometry height="160" width="260" x="645" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="portfolio_attrs" parent="portfolio_title" style="text;strokeColor=none;fillColor=#EEF2F9;align=left;verticalAlign=top;spacingLeft=8;fontSize=11;" value="– portfolioID: String&#xa;– name: String&#xa;– cycle: String&#xa;– status: Enum {Active, Closed}&#xa;– totalBudget: Float&#xa;– createdDate: Date" vertex="1">
+          <mxGeometry height="130" width="260" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="project_title" parent="1" style="swimlane;startSize=30;fillColor=#2E5B9A;strokeColor=#2E5B9A;fontColor=#ffffff;fontStyle=1;fontSize=13;" value="Project" vertex="1">
+          <mxGeometry height="200" width="260" x="645" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="project_attrs" parent="project_title" style="text;strokeColor=none;fillColor=#EEF2F9;align=left;verticalAlign=top;spacingLeft=8;fontSize=11;" value="– projectID: String&#xa;– name: String&#xa;– description: String&#xa;– estimatedBudget: Float&#xa;– durationWeeks: Integer&#xa;– status: Enum {Proposed, Approved,&#xa;   Deferred, Rejected}&#xa;– submittedDate: Date" vertex="1">
+          <mxGeometry height="170" width="260" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="stobj_title" parent="1" style="swimlane;startSize=30;fillColor=#16A085;strokeColor=#16A085;fontColor=#ffffff;fontStyle=1;fontSize=13;" value="StrategicObjective" vertex="1">
+          <mxGeometry height="160" width="260" x="298" y="210" as="geometry" />
+        </mxCell>
+        <mxCell id="stobj_attrs" parent="stobj_title" style="text;strokeColor=none;fillColor=#E8F8F5;align=left;verticalAlign=top;spacingLeft=8;fontSize=11;" value="– objectiveID: String&#xa;– description: String&#xa;– weight: Float (0–1)&#xa;– category: String&#xa;– active: Boolean" vertex="1">
+          <mxGeometry height="130" width="260" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="evalcrit_title" parent="1" style="swimlane;startSize=30;fillColor=#16A085;strokeColor=#16A085;fontColor=#ffffff;fontStyle=1;fontSize=13;" value="EvaluationCriteria" vertex="1">
+          <mxGeometry height="170" width="260" x="382" y="700" as="geometry" />
+        </mxCell>
+        <mxCell id="evalcrit_attrs" parent="evalcrit_title" style="text;strokeColor=none;fillColor=#E8F8F5;align=left;verticalAlign=top;spacingLeft=8;fontSize=11;" value="– criteriaID: String&#xa;– name: String&#xa;– weight: Float (0–1)&#xa;– threshold: Float&#xa;– phase: Enum {Phase1, Phase2}&#xa;– scoringScale: String" vertex="1">
+          <mxGeometry height="140" width="260" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="resource_title" parent="1" style="swimlane;startSize=30;fillColor=#E67E22;strokeColor=#E67E22;fontColor=#ffffff;fontStyle=1;fontSize=13;" value="Resource" vertex="1">
+          <mxGeometry height="170" width="260" x="1010" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="resource_attrs" parent="resource_title" style="text;strokeColor=none;fillColor=#FEF9E7;align=left;verticalAlign=top;spacingLeft=8;fontSize=11;" value="– resourceID: String&#xa;– type: Enum {Human, Financial,&#xa;   Infrastructure}&#xa;– skillRole: String&#xa;– availableUnits: Float&#xa;– costPerUnit: Float&#xa;– period: String" vertex="1">
+          <mxGeometry height="140" width="260" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="constraint_title" parent="1" style="swimlane;startSize=30;fillColor=#E67E22;strokeColor=#E67E22;fontColor=#ffffff;fontStyle=1;fontSize=13;" value="Constraint" vertex="1">
+          <mxGeometry height="160" width="260" x="1010" y="520" as="geometry" />
+        </mxCell>
+        <mxCell id="constraint_attrs" parent="constraint_title" style="text;strokeColor=none;fillColor=#FEF9E7;align=left;verticalAlign=top;spacingLeft=8;fontSize=11;" value="– constraintID: String&#xa;– type: Enum {Budget, Skill,&#xa;   Timing, Dependency}&#xa;– limit: Float&#xa;– period: String&#xa;– active: Boolean" vertex="1">
+          <mxGeometry height="130" width="260" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="decision_title" parent="1" style="swimlane;startSize=30;fillColor=#b85450;strokeColor=#b85450;fontColor=#ffffff;fontStyle=1;fontSize=13;" value="DecisionRecord" vertex="1">
+          <mxGeometry height="190" width="260" x="720" y="680" as="geometry" />
+        </mxCell>
+        <mxCell id="decision_attrs" parent="decision_title" style="text;strokeColor=none;fillColor=#FADBD8;align=left;verticalAlign=top;spacingLeft=8;fontSize=11;" value="– recordID: String&#xa;– outcome: Enum {Approved,&#xa;   Deferred, Rejected}&#xa;– phaseReached: Enum {Phase1,&#xa;   Phase2}&#xa;– phase1Score: Float&#xa;– reason: String&#xa;– timestamp: DateTime&#xa;– reviewedBy: String" vertex="1">
+          <mxGeometry height="160" width="260" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_port_proj" edge="1" parent="1" source="portfolio_title" style="edgeStyle=orthogonalEdgeStyle;endArrow=ERmany;startArrow=ERone;startFill=0;endFill=0;strokeColor=#2E5B9A;strokeWidth=2;" target="project_title">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_port_proj_label" connectable="0" parent="rel_port_proj" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;fontSize=10;fontStyle=1;" value="contains&#xa;1 to *" vertex="1">
+          <mxGeometry relative="1" x="-0.1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel_proj_stobj" edge="1" parent="1" source="project_title" style="edgeStyle=orthogonalEdgeStyle;endArrow=ERmany;startArrow=ERmany;startFill=0;endFill=0;strokeColor=#16A085;strokeWidth=2;" target="stobj_title">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_proj_stobj_label" connectable="0" parent="rel_proj_stobj" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;fontSize=10;fontStyle=1;" value="aligns with&#xa;* to *" vertex="1">
+          <mxGeometry relative="1" x="0.1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel_proj_eval" edge="1" parent="1" source="project_title" style="edgeStyle=orthogonalEdgeStyle;endArrow=ERmany;startArrow=ERmany;startFill=0;endFill=0;strokeColor=#16A085;strokeWidth=2;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="evalcrit_title">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="512" y="480" />
+              <mxPoint x="512" y="655" />
+              <mxPoint x="513" y="700" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel_proj_eval_label" connectable="0" parent="rel_proj_eval" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;fontSize=10;fontStyle=1;" value="scored by&#xa;* to *" vertex="1">
+          <mxGeometry relative="1" x="0.1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel_proj_res" edge="1" parent="1" source="project_attrs" style="edgeStyle=orthogonalEdgeStyle;endArrow=ERmany;startArrow=ERmany;startFill=0;endFill=0;strokeColor=#E67E22;strokeWidth=2;exitX=1;exitY=0.25;exitDx=0;exitDy=0;" target="resource_title">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_proj_res_label" connectable="0" parent="rel_proj_res" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;fontSize=10;fontStyle=1;" value="demands&#xa;* to *" vertex="1">
+          <mxGeometry relative="1" x="0.1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel_res_con" edge="1" parent="1" source="resource_title" style="edgeStyle=orthogonalEdgeStyle;endArrow=ERmany;startArrow=ERone;startFill=0;endFill=0;strokeColor=#E67E22;strokeWidth=2;" target="constraint_title">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_res_con_label" connectable="0" parent="rel_res_con" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;fontSize=10;fontStyle=1;" value="bounded by&#xa;1 to *" vertex="1">
+          <mxGeometry relative="1" x="0.1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel_proj_dec" edge="1" parent="1" source="project_title" style="edgeStyle=orthogonalEdgeStyle;endArrow=ERone;startArrow=ERone;startFill=0;endFill=0;strokeColor=#b85450;strokeWidth=2;" target="decision_title">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_proj_dec_label" connectable="0" parent="rel_proj_dec" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;fontSize=10;fontStyle=1;" value="recorded in&#xa;1 to 1" vertex="1">
+          <mxGeometry relative="1" x="0.1" as="geometry">
+            <mxPoint x="-14" y="-20" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel_proj_self" edge="1" parent="1" source="project_title" style="edgeStyle=orthogonalEdgeStyle;endArrow=ERmany;startArrow=ERmany;startFill=0;endFill=0;strokeColor=#666666;strokeWidth=1;dashed=1;" target="project_title">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="960" y="420" />
+              <mxPoint x="960" y="480" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel_proj_self_label" connectable="0" parent="rel_proj_self" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;fontSize=10;fontStyle=1;fontColor=#666666;" value="depends on&#xa;(optional)" vertex="1">
+          <mxGeometry relative="1" x="0.3" as="geometry">
+            <mxPoint y="-25" as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
